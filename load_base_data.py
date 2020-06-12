@@ -108,10 +108,6 @@ if __name__ == "__main__":
     # Load the categories dataframe from the base category files
     categories_df = LoadBaseData(processor = processor, verbose = VERBOSE)
 
-    categories_df = categories_df.reset_index()
-    for i in categories_df.columns:
-        print(i, "-", categories_df[i][0])
-
     # TODO: Add in data cleaning or other preprocessing steps, if needed.
 
     # Save the base data

@@ -141,7 +141,7 @@ class LoadCategories(object):
 
         if verbose: print("\nDataframe processing complete for all categories.\n")
 
-        return df_all
+        return df_all.reset_index()
 
     #---------------------------------------------------------------------------
     # (Public Method) GetDataframeFromBase
