@@ -29,8 +29,9 @@ This repo contains the draft work for the visualization of AI/ML research papers
 
   |File | Description |
   |:----|:------------|
-  |[file.py](file.py)| fill in description here |
-  |[file.py](file.py)| A more meaningful description goes here |
+  |[load_base_data.py](load_base_data.py)| Processes the base arXiv categories data, storing the output into a single Pandas.DataFrame (HDF5 file) |
+  |[utils/preprocessing.py](utils/preprocessing.py)| Utility class; used for loading the raw arXiv data and storing the Pandas.DataFrame as HDF5 |
+  |[Example - Load HDF5 File.ipynb](Example%20-%20Load%20HDF5%20File.ipynb)| Jupyter Notebook demonstrating how to read in the HDF5 stored Pandas.DataFrame |
 
 ---
 
