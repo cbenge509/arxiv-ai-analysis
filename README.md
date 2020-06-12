@@ -1,7 +1,7 @@
 arXiv.org AI/ML Analysis
 ==========================================================
 
-![GitHub](https://img.shields.io/github/license/cbenge509/BERTVision) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cbenge509/BERTVision) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/BERTVision/tensorflow) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/BERTVision/transformers) ![GitHub contributors](https://img.shields.io/github/contributors/cbenge509/BERTVision) ![GitHub repo size](https://img.shields.io/github/repo-size/cbenge509/BERTVision)
+![GitHub](https://img.shields.io/github/license/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/pandas) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/h5py) ![GitHub contributors](https://img.shields.io/github/contributors/cbenge509/arxiv-ai-analysis) ![GitHub repo size](https://img.shields.io/github/repo-size/cbenge509/arxiv-ai-analysis)
 
 <img align="right" width="180" src="./images/ucb.png"/>
 
