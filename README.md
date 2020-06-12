@@ -17,7 +17,7 @@ Summer 2020, W209 - Data Visualization - [Andrew Reagan, PhD](https://www.linked
 
 ## Description
 
-This repo contains the draft work for the visualization of AI/ML research papers catalogued on [arXiv.org](https://arxiv.org/) for calendary years 1999 through 2019.  Categories under consideration have been limited to:
+This repo contains the draft work for the visualization of AI/ML research papers catalogued on [arXiv.org](https://arxiv.org/) for calendary years 1993 through 2019.  Categories under consideration have been limited to:
 
  - Computer Science: Artificial Intelligence [``cs: AI``]
  - Computer Science: Machine Learning [``cs: LG``]
