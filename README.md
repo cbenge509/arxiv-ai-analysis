@@ -21,7 +21,7 @@ This repo contains the draft work for the visualization of AI/ML research papers
 
  - Computer Science: Artificial Intelligence [``cs: AI``]
  - Computer Science: Machine Learning [``cs: LG``]
- - Statistics: Machine Learning [``stat: ML] 
+ - Statistics: Machine Learning [``stat: ML``] 
 
 ---
 
