@@ -1,7 +1,7 @@
 arXiv.org AI/ML Analysis
 ==========================================================
 
-![GitHub](https://img.shields.io/github/license/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/pandas) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/h5py) ![GitHub contributors](https://img.shields.io/github/contributors/cbenge509/arxiv-ai-analysis) ![GitHub repo size](https://img.shields.io/github/repo-size/cbenge509/arxiv-ai-analysis)
+![GitHub](https://img.shields.io/github/license/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/pandas) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/h5py) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/spacy) ![GitHub contributors](https://img.shields.io/github/contributors/cbenge509/arxiv-ai-analysis) ![GitHub repo size](https://img.shields.io/github/repo-size/cbenge509/arxiv-ai-analysis)
 
 <img align="right" width="180" src="./images/ucb.png"/>
 
@@ -37,10 +37,14 @@ This repo contains the draft work for the visualization of AI/ML research papers
 
 ## Visualization Samples
 
-(NOTE: Work in Progress, below is not real!)
+(NOTE: Work in progress, pardon our dust!)
 
 <br>
-<img width="900" src="./images/25%20Topics%20COVID-19.png"/>
+
+<img width="900" src="./images/eda_3.png"/>
+<img width="900" src="./images/eda_2.png"/>
+<img width="600" src="./images/eda_1.png" align="center"/>
+
 <br>
 
 ---
