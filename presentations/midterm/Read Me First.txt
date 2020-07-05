@@ -1,0 +1,18 @@
+FONT USED IN THIS TEMPLATE :
+
+MONTSERRAT
+You can install it from the "./Required Fonts" folder
+... or you can download it at : https://www.fontsquirrel.com/fonts/montserrat
+
+OPEN SANS
+You can install it from the "./Required Fonts" folder
+... of you can download it at : https://fonts.google.com/specimen/Open+Sans
+
+.:::SHORT INSTRUCTION:::.
+
+How to change color theme:
+	go to -> tab "View" -> "Slide Master" -> click "Colors" on top -> Customize Colors
+
+To change background:
+	go to -> tab "View" -> "Slide Master" -> Right Click "Format Background" -> 
+		Picture or texture fill -> chose image on "background" Folder
