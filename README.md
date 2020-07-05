@@ -25,25 +25,50 @@ This repo contains the draft work for the visualization of AI/ML research papers
 
 ---
 
+This project leverages the following visualization frameworks:
+
+ * [Matplotlib](https://matplotlib.org/)
+ * [Seaborn](https://seaborn.pydata.org/)
+ * [Altair](https://www.altair.com/)
+ * [Plotly](https://plotly.com/python/)
+ * [Bokeh](https://docs.bokeh.org/en/latest/index.html)
+ * [Power BI](https://powerbi.microsoft.com/en-us/)
+ * [Tableau](https://www.tableau.com/)
+
+---
+
 #### Highlight of key files included in this repository:
 
   |File | Description |
   |:----|:------------|
+  |[ArXiV AI & ML Analytics - Midterm.pptx](presentations/midterm/ArXiV%20AI&%20ML%20Analytics%20-%20Midterm.pptx)| Midterm presentation for arXiv AI & ML Analysis solution |
+  |[w209_assignment_2__cris_benge.pdf](reports/a2/w209_assignment_2__cris_benge.pdf)| Assignment 2, covering thorough review and initial hypothesis testing of arXiv data. |
   |[load_base_data.py](load_base_data.py)| Processes the base arXiv categories data, storing the output into a single Pandas.DataFrame (HDF5 file) |
-  |[utils/preprocessing.py](utils/preprocessing.py)| Utility class; used for loading the raw arXiv data and storing the Pandas.DataFrame as HDF5 |
-  |[Example - Load HDF5 File.ipynb](Example%20-%20Load%20HDF5%20File.ipynb)| Jupyter Notebook demonstrating how to read in the HDF5 stored Pandas.DataFrame |
+  | [refine_data_for_analysis.py](refine_data_for_analysis.py) | Processes the consolidated (but raw) arXiv categories data, generating the final analysis output data (CSV file) |
+  |[utils/preprocessing.py](utils/preprocessing.py)| Utility class; used for loading the raw arXiv data and generating the processed analysis dataset |
+  |[plot_utils.py](utils/plot_utils.py)| Utility class; used for generating various plots in EDA |
+  |[Exploratory Data Analysis.ipynb](Exploratory%20Data%20Analysis.ipynb)| Jupyter Notebook demonstrating the basic exploratory data analysis performed |
+  |[Clustering and Topic Modeling.ipynb](Clustering%20and%20Topic%20Modeling.ipynb)| Jupyter Notebook containing the walk-through for clustering and topic modeling of the arXiv dataset |
+
 
 ---
 
 ## Visualization Samples
 
-(NOTE: Work in progress, pardon our dust!)
-
 <br>
 
+<img width="900" src="./images/pbi_1.png"/>
 <img width="900" src="./images/eda_3.png"/>
 <img width="900" src="./images/eda_2.png"/>
-<img width="600" src="./images/eda_1.png" align="center"/>
+<img width="900" src="./images/eda_4.png"/>
+<img width="900" src="./images/eda_5.png"/>
+<img width="900" src="./images/eda_6.png"/>
+<img width="900" src="./images/eda_7.png"/>
+<img width="400" src="./images/eda_arxiv_cornell.png" align = "left"/>
+<img width="450" src="./images/eda_1.png" align="right"/>
+<img width="900" src="./images/tableau_1.png"/>
+<img width="900" src="./images/tableau_2.png"/>
+<img width="900" src="./images/tableau_3.png"/>
 
 <br>
 
@@ -57,4 +82,4 @@ Data was collected from the tremendous work provided by the [arxiv_archive](http
 
 License
 -------
-Licensed under the MIT License. See [LICENSE](LICENSE.txt) file for more details.
+Licensed under the MIT License. See [LICENSE](LICENSE) file for more details.
