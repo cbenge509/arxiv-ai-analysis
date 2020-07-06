@@ -26,6 +26,9 @@ spacy = "==2.3.0"
 virtualenv = "==20.0.21"
 virtualenv-clone = "==0.5.4"
 Cycler = "==0.10.0"
+plotly = "==4.8.2"
+bokeh = "==2.1.1"
+altair = "==4.1.0"
 
 [requires]
 python_version = "3.8"

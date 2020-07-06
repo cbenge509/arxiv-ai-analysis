@@ -12,6 +12,18 @@ import pandas as pd
 import seaborn as sns
 import altair as alt
 import plotly.graph_objects as go
+from bokeh.models import CustomJS
+import os
+import bokeh
+from bokeh.models import ColumnDataSource, HoverTool, LinearColorMapper, CustomJS, Slider, TapTool, TextInput
+from bokeh.palettes import Category20
+from bokeh.transform import linear_cmap, transform
+from bokeh.io import output_file, show, save, output_notebook
+from bokeh.plotting import figure
+from bokeh.models import RadioButtonGroup, TextInput, Div, Paragraph
+from bokeh.layouts import column, widgetbox, row, layout
+from bokeh.layouts import column
+
 
 ############################################################################
 # Plotting Utilities, Constants, Methods for W209 arXiv project
@@ -612,3 +624,204 @@ def plotly_4ngram_trend(df_top_ngrams, labels = ['neural network', 'reinforcemen
     fig.update_layout(annotations=annotations)
 
     fig.show()
+
+
+############################################################################
+# BOKEH Section
+############################################################################
+
+# handle the currently selected article
+def selected_code():
+    code = """
+            var titles = [];
+            var authors = [];
+            var categories = [];
+            var clusters = [];
+            var arxivids = [];
+            cb_data.source.selected.indices.forEach(index => titles.push(source.data['titles'][index]));
+            cb_data.source.selected.indices.forEach(index => authors.push(source.data['authors'][index]));
+            cb_data.source.selected.indices.forEach(index => arxivids.push(source.data['arxivids'][index]));
+            cb_data.source.selected.indices.forEach(index => categories.push(source.data['categories'][index]));
+            cb_data.source.selected.indices.forEach(index => clusters.push(source.data['labels'][index]));
+            var title = "<h4>" + titles[0].toString().replace(/<br>/g, ' ') + "</h4>";
+            var author = "<p1><b>Authors: </b> " + authors[0].toString().replace(/<br>/g, ' ') + "<br>";
+            var arxivid = "<p1><b>arXiv id: </b> " + arxivids[0].toString() + "<br>";
+            var category = "<b>P. Category: </b>" + categories[0].toString() + "<br>";
+            var cluster = "<b>Cluster: </b>" + clusters[0].toString() + "<br></p1>";
+            current_selection.text = title + author + arxivid + category + cluster;
+            current_selection.change.emit();
+    """
+    return code
+
+# handle the keywords and search
+def input_callback(plot, source, out_text, topics): 
+
+    # slider call back for cluster selection
+    callback = CustomJS(args=dict(p=plot, source=source, out_text=out_text, topics=topics), code="""
+				var key = text.value;
+				key = key.toLowerCase();
+				var cluster = slider.value;
+                var data = source.data; 
+                var i = 0;
+
+                var x = data['x'];
+                var y = data['y'];
+                var x_backup = data['x_backup'];
+                var y_backup = data['y_backup'];
+                var labels = data['desc'];
+                var abstract = data['abstract'];
+                var titles = data['titles'];
+                var authors = data['authors'];
+                var categories = data['categories'];
+                if (cluster == '15') {
+                    out_text.text = 'Keywords: Slide to specific cluster to see the keywords.';
+                    for (i = 0; i < x.length; i++) {
+						if(abstract[i].includes(key) || 
+						titles[i].includes(key) || 
+						authors[i].includes(key) || 
+						categories[i].includes(key)) {
+							x[i] = x_backup[i];
+							y[i] = y_backup[i];
+						} else {
+							x[i] = undefined;
+							y[i] = undefined;
+						}
+                    }
+                }
+                else {
+                    out_text.text = 'Keywords: ' + topics[Number(cluster)];
+                    for (i = 0; i < x.length; i++) {
+                        if(labels[i] == cluster) {
+							if(abstract[i].includes(key) || 
+							titles[i].includes(key) || 
+							authors[i].includes(key) || 
+							categories[i].includes(key)) {
+								x[i] = x_backup[i];
+								y[i] = y_backup[i];
+							} else {
+								x[i] = undefined;
+								y[i] = undefined;
+							}
+                        } else {
+                            x[i] = undefined;
+                            y[i] = undefined;
+                        }
+                    }
+                }
+            source.change.emit();
+            """)
+    return callback
+
+def bokeh_load_clusters_plot(df, topics, output_filename = './reports/bokeh/t-sne_arxiv_abstracts.html'):
+
+    output_notebook()
+    # target labels
+    y_labels = df.cluster.values
+
+    # data sources
+    source = ColumnDataSource(data=dict(
+        x= df.tsne_X.values, 
+        y= df.tsne_Y.values,
+        x_backup = df.tsne_X.values,
+        y_backup = df.tsne_Y.values,
+        desc= y_labels, 
+        titles= df.title.values,
+        authors = df.author_text.values,
+        categories = df.primary_cat.values,
+        abstract = df.abstract.values,
+        labels = ["C-" + str(x) for x in y_labels],
+        arxivids = df.arxiv_id.values
+        ))
+
+    # hover over information
+    hover = HoverTool(tooltips=[
+        ("Title", "@titles{safe}"),
+        ("arXiv id", "@arxivids{safe}"),
+        ("Author(s)", "@authors{safe}"),
+        ("Category", "@categories{safe}"),
+        ("Cluster", "@labels{safe}"),
+        ("Abstract", "@abstract{safe}")
+    ],
+    point_policy="follow_mouse")
+
+    # map colors
+    mapper = linear_cmap(field_name='desc', 
+                        palette=Category20[20],
+                        low=min(y_labels) ,high=max(y_labels))
+
+    # prepare the figure
+    plot = figure(plot_width=800, plot_height=500, 
+            tools=[hover, 'pan', 'wheel_zoom', 'box_zoom', 'reset', 'save', 'tap'], 
+            title="Clustering of arXiv [cs.AI, cs.LG, stat.ML] Literature from 1993-2019 with PCA, t-SNE and K-Means (K=15)", 
+            toolbar_location="above")
+
+    # plot settings
+    plot.scatter('x', 'y', size=5, 
+            source=source,
+            fill_color=mapper,
+            line_alpha=0.3,
+            line_color="black",
+            #legend = 'labels')
+            legend_group = 'labels')
+
+    plot.legend.background_fill_alpha = 0.6
+
+    # Keywords
+    text_banner = Paragraph(text= 'Keywords: Slide to specific cluster to see the keywords.', height=45)
+    input_callback_1 = input_callback(plot, source, text_banner, topics)
+
+    # currently selected article
+    div_curr = Div(text="""Click on a plot to see the article summary.""",height=150)
+    callback_selected = CustomJS(args=dict(source=source, current_selection=div_curr), code=selected_code())
+    taptool = plot.select(type=TapTool)
+    taptool.callback = callback_selected
+
+    # WIDGETS
+    #slider = Slider(start=0, end=15, value=15, step=1, title="Cluster #", js_event_callbacks = {'on_change': [input_callback_1]})
+    slider = Slider(start=0, end=15, value=15, step=1, title="Cluster #")
+    #keyword = TextInput(title="Search:", js_event_callbacks = {'on_change': [input_callback_1]})
+    keyword = TextInput(title="Abstract Search:")
+
+    # pass call back arguments
+    input_callback_1.args["text"] = keyword
+    input_callback_1.args["slider"] = slider
+
+    slider.js_on_change('value', input_callback_1)
+    keyword.js_on_change('value', input_callback_1)
+
+    # STYLE
+    slider.sizing_mode = "stretch_width"
+    slider.margin=15
+
+    keyword.sizing_mode = "scale_both"
+    keyword.margin=15
+
+    div_curr.style={'color': '#BF0A30', 'font-family': 'Helvetica Neue, Helvetica, Arial, sans-serif;', 'font-size': '1.1em'}
+    div_curr.sizing_mode = "scale_both"
+    div_curr.margin = 20
+
+    text_banner.style={'color': '#0269A4', 'font-family': 'Helvetica Neue, Helvetica, Arial, sans-serif;', 'font-size': '1.1em'}
+    text_banner.sizing_mode = "scale_both"
+    text_banner.margin = 20
+
+    plot.sizing_mode = "scale_both"
+    plot.margin = 5
+
+    r = row(div_curr,text_banner)
+    r.sizing_mode = "stretch_width"
+
+    # LAYOUT OF THE PAGE
+    l = layout([
+        [slider, keyword],
+        [text_banner],
+        [div_curr],
+        [plot],
+    ])
+    l.sizing_mode = "scale_both"
+
+    # show
+    output_file(filename = output_filename, title = 'arXiv Abstract Clusters (K=15)')
+    save (l)
+    del l
+
+    return

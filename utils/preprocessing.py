@@ -414,10 +414,10 @@ class CleanData(object):
         # STEP 7. TSNE embeddings
         if verbose: print("Clean.Process - Step 7 : TSNE embeddings...")
         
-        tsne = TSNE(verbose = verbose, perplexity = 100, random_state = 42)
-        tsne_embedded = tsne.fit_transform(clean_text.toarray())
-
-
+        tsne = TSNE(verbose = verbose, perplexity = 50, random_state = 42)
+        tsne_embedded = tsne.fit_transform(reduced)
+        df['tsne_X'] = tsne_embedded.T[0].astype(np.float16)
+        df['tsne_Y'] = tsne_embedded.T[1].astype(np.float16)
 
         if verbose: print("Clean.Process() complete.")
 

@@ -1,7 +1,7 @@
 arXiv.org AI/ML Analysis
 ==========================================================
 
-![GitHub](https://img.shields.io/github/license/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/pandas) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/h5py) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/spacy) ![GitHub contributors](https://img.shields.io/github/contributors/cbenge509/arxiv-ai-analysis) ![GitHub repo size](https://img.shields.io/github/repo-size/cbenge509/arxiv-ai-analysis)
+![GitHub](https://img.shields.io/github/license/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/cbenge509/arxiv-ai-analysis) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/pandas) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/h5py) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/spacy) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/bokeh) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/plotly) ![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/cbenge509/arxiv-ai-analysis/altair) 
 
 <img align="right" width="180" src="./images/ucb.png"/>
 
@@ -22,6 +22,10 @@ This repo contains the draft work for the visualization of AI/ML research papers
  - Computer Science: Artificial Intelligence [``cs: AI``]
  - Computer Science: Machine Learning [``cs: LG``]
  - Statistics: Machine Learning [``stat: ML``] 
+
+There are two external visuals for this project:
+ * [Bokeh ArXiV Paper Clustering Visual](https://victorious-plant-0cdd0420f.azurestaticapps.net/) (hosted in Azure Web App)
+ * [Power BI ArXiV Paper Dashboard](https://msit.powerbi.com/groups/me/reports/faa917b2-afde-40ff-b5d9-6e8eaf7c3cf9?ctid=72f988bf-86f1-41af-91ab-2d7cd011db47) (requires access grant and Power BI login)
 
 ---
 
@@ -58,14 +62,15 @@ This project leverages the following visualization frameworks:
 <br>
 
 <img width="900" src="./images/pbi_1.png"/>
+<img width="900" src="./images/bokeh_1.png"/>
 <img width="900" src="./images/eda_3.png"/>
 <img width="900" src="./images/eda_2.png"/>
 <img width="900" src="./images/eda_4.png"/>
 <img width="900" src="./images/eda_5.png"/>
 <img width="900" src="./images/eda_6.png"/>
 <img width="900" src="./images/eda_7.png"/>
-<img width="400" src="./images/eda_arxiv_cornell.png" align = "left"/>
-<img width="450" src="./images/eda_1.png" align="right"/>
+<img width="300" src="./images/eda_arxiv_cornell.png" align = "left"/>
+<img width="350" src="./images/eda_1.png" align="right"/>
 <img width="900" src="./images/tableau_1.png"/>
 <img width="900" src="./images/tableau_2.png"/>
 <img width="900" src="./images/tableau_3.png"/>
