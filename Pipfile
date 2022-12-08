@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 appdirs = "==1.4.4"
-certifi = "==2020.4.5.2"
+certifi = "==2022.12.7"
 distlib = "==0.3.0"
 filelock = "==3.0.12"
 h5py = "==2.10.0"
